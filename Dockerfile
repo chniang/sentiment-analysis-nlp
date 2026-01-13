@@ -1,14 +1,11 @@
-﻿FROM python:3.11-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
 # Copier les fichiers nécessaires
 COPY requirements.txt .
 COPY app.py .
-COPY assets ./assets
 COPY data ./data
-COPY models ./models
-COPY utils ./utils
 
 # Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
