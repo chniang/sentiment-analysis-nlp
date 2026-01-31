@@ -27,12 +27,13 @@ Application web interactive pour l'analyse automatique de sentiments avec 3 mode
 - Détection instantanée du sentiment avec score de polarité (-1 à +1)
 - Indicateur de subjectivité (fait vs opinion)
 - Visualisation avec emoji et code couleur
+- Jauge interactive affichant le score de sentiment
 
 **Mode 2 - Analyse Multiple**
 - Upload de plusieurs textes simultanément
 - Tableau récapitulatif avec sentiments individuels
 - Statistiques globales (% positif, négatif, neutre)
-- Graphiques de distribution
+- Graphiques de distribution (camembert + barres)
 
 **Mode 3 - Upload CSV**
 - Import de fichiers CSV avec des colonnes de texte
@@ -44,6 +45,7 @@ Application web interactive pour l'analyse automatique de sentiments avec 3 mode
 - **Nuage de mots** (WordCloud) des termes les plus utilisés
 - **Graphiques Plotly** interactifs (barres, camemberts)
 - **Métriques en temps réel** (polarité moyenne, taux de positivité)
+- **Jauge de sentiment** pour visualisation intuitive
 
 ---
 
@@ -124,8 +126,8 @@ pip
 ### Installation
 ```bash
 # Cloner le repo
-git clone https://github.com/chniang/sentiment_analysis.git
-cd sentiment_analysis
+git clone https://github.com/chniang/sentiment-analysis-nlp.git
+cd sentiment-analysis-nlp
 
 # Installer les dépendances
 pip install -r requirements.txt
@@ -139,7 +141,7 @@ streamlit run app.py
 **Mode Texte Simple :**
 1. Sélectionner "Texte Simple" dans le menu
 2. Saisir votre texte
-3. Voir le sentiment instantanément
+3. Voir le sentiment instantanément avec jauge de score
 
 **Mode CSV :**
 1. Préparer un fichier CSV avec une colonne de texte
@@ -150,20 +152,21 @@ streamlit run app.py
 
 ## 📸 APERÇU
 
-### Interface Principale
-![Interface](images/interface.png)
+### Analyse Texte Simple - Sentiment Positif
+![Analyse Simple Positif](images/analyse_simple_positif.png)
+*Détection de sentiment positif avec score de polarité 0.685 et jauge interactive*
 
-### Analyse Texte Simple
-![Analyse Simple](images/analyse_simple.png)
+### Analyse Texte Simple - Sentiment Négatif
+![Analyse Simple Négatif](images/analyse_simple_negatif.png)
+*Détection de sentiment négatif avec score de polarité -0.63*
 
-### Analyse Multiple
-![Analyse Multiple](images/analyse_multiple.png)
+### Résultats Analyse Multiple
+![Résultats Multiple](images/resultats_multiple.png)
+*Tableau récapitulatif de 10 textes analysés avec statistiques (6 positifs, 4 négatifs)*
 
-### WordCloud Généré
-![WordCloud](images/wordcloud.png)
-
-### Dashboard Statistiques
-![Dashboard](images/dashboard.png)
+### Graphiques de Distribution
+![Graphiques](images/graphiques_multiple.png)
+*Visualisations interactives : distribution des sentiments (60% positif, 40% négatif) et scores de polarité*
 
 ---
 
@@ -171,7 +174,7 @@ streamlit run app.py
 
 ✅ **Temps de traitement** : <1 seconde pour analyse simple, <5 secondes pour 100 textes  
 ✅ **Précision** : ~80% sur textes en anglais (TextBlob pré-entraîné)  
-✅ **Scalabilité** : Teste jusqu'à 10 000 lignes CSV sans ralentissement  
+✅ **Scalabilité** : Testé jusqu'à 10 000 lignes CSV sans ralentissement  
 ✅ **Langues supportées** : Anglais (natif), Français (via traduction)
 
 ### Insights Découverts (Tests Réels)
